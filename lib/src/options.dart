@@ -17,14 +17,4 @@ class Options {
   });
 }
 
-enum Format {
-  rgba,
-  rgb,
-  rgbArray,
-  hsla,
-  hex,
-  hsl,
-  hsva,
-  hsvArray,
-  hslArray,
-}
+enum Format { rgba, rgb, rgbArray, hsla, hex, hsl, hsva, hsvArray, hslArray }
