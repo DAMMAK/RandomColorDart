@@ -25,11 +25,11 @@ You can pass an option to influence the type of color it produces. The options o
 
 **colorType -** This control the type of color to be generated. colortype is a enum data type of the following:- `random`, `monochrome`, `red`, `orange`, `yellow`, `green`, `blue`, `purple`, `pink`
 
-**luminosity -** This control the luminosity of the generated color. luminosity is a enum data type of the following:- random, dark, light, bright
+**luminosity -** This control the luminosity of the generated color. luminosity is a enum data type of the following:- `random`, `dark`, `light`, `bright`
 
-**format -** This control the format of the generated color, it tells the output format of the color. format is a enum data type of the following:- rgba, rgb, rgbArray, hsla, hex, hsl, hsva, hsvArray, hslArray.
+**format -** This control the format of the generated color, it tells the output format of the color. format is a enum data type of the following:- `rgba`, `rgb`, `rgbArray`, `hsla`, `hex`, `hsl`, `hsva`, `hsvArray`, `hslArray`.
 
-**alpha -** This control the opacity of the generated color, it is a decimal between 0 to 1. it is only neccessary on rgba, hsla.
+**alpha -** This control the opacity of the generated color, it is a decimal between `0` to `1`. it is only neccessary on `rgba`, `hsla`.
 
 **count -** This control the length of the generated color. it is only neccessary when generating color that is greater than 1
 
