@@ -4,6 +4,8 @@ A dart package for generating attractive random colors.
 
 This is a Dart port of David Merfield randomColor Javascript utility
 
+[![Demo](https://github.com/DAMMAK/RandomColorDart/blob/master/randomcolor.png)](http://www.strangeplanet.fr/work/RandomColor.php)
+
 ## Installing
 
 ```dart
