@@ -1,19 +1,24 @@
+library flutter_randomcolor;
+
 import 'dart:math' as math;
 
-import 'package:randomcolor/src/colortype.dart';
-import 'package:randomcolor/src/luminos.dart';
-import 'package:randomcolor/src/options.dart';
-import 'package:randomcolor/src/range.dart';
+import 'package:flutter_randomcolor/flutter_randomcolor.dart';
+import 'package:flutter_randomcolor/src/colortype.dart';
+import 'package:flutter_randomcolor/src/range.dart';
 
 class RandomColor {
+  // color dictionary that save all the colors
   static Map<ColorType, DefinedColor> _colorDictionary =
       Map<ColorType, DefinedColor>();
   static math.Random _random = math.Random(); //seed data
 
+// get random colors based on options provided
   static getColor(Options options) {
     __loadColorBounds();
+    // check if count is not provided or less than 2 then return a single color
     if (options.count == null || options.count < 2) return _pick(options);
     var colors = [];
+    // if coloor count is more than 1 return an array of color
     for (var i = 0; i < options.count; i++) {
       var _color = _pick(options);
       colors.add(_color);
@@ -21,6 +26,7 @@ class RandomColor {
     return colors;
   }
 
+  // get the color based on provided option and return a single color
   static _pick(Options options) {
     int hue;
     int saturation;
@@ -31,6 +37,7 @@ class RandomColor {
     return _setFormat(hue, saturation, brightness, options);
   }
 
+  // generate a random value
   static void seed(int seed) {
     if (seed == null) {
       _random = math.Random();
@@ -39,6 +46,7 @@ class RandomColor {
     _random = math.Random(seed);
   }
 
+  // define the color based on provided hue and lowerBounds
   static _defineColor(
       {ColorType colorType, List<int> hueRange, List<List> lowerBounds}) {
     var sMin = lowerBounds[0][0]; // saturation lowerbound
@@ -55,17 +63,40 @@ class RandomColor {
   }
 
 // Get Hue Range
-  static Range _getHueRange(ColorType colorType) {
-    DefinedColor color;
-    color = _colorDictionary[colorType];
-    if (color.hueRange != null) {
-      return color.hueRange;
+  static Range _getHueRange(dynamic colorType) {
+    List<Range> ranges = [];
+    if (colorType is ColorType) {
+      var color = _colorDictionary[colorType];
+      if (color != null) {
+        return color.hueRange;
+      }
     }
-    return Range(lower: 0, upper: 360);
+    if (colorType is List<ColorType>) {
+      colorType.forEach((ColorType element) {
+        if (element == ColorType.random) {
+          ranges.add(Range(lower: 0, upper: 360));
+        } else {
+          ranges.add(_colorDictionary[element].hueRange);
+        }
+      });
+    }
+    if (ranges.length == 0) {
+      return Range(lower: 0, upper: 360);
+    } else if (ranges.length == 1) {
+      return ranges[0];
+    } else {
+      return ranges[_randomWithin(Range(lower: 0, upper: ranges.length - 1))];
+    }
+    // DefinedColor color;
+    // color = _colorDictionary[colorType];
+    // if (color.hueRange != null) {
+    //   return color.hueRange;
+    // }
+    // return Range(lower: 0, upper: 360);
   }
 
-  // Pick Hue
-  static _pickHue(ColorType colorType) {
+  // Pick Hue using a specific colorType
+  static _pickHue(dynamic colorType) {
     var hueRange = _getHueRange(colorType);
     if (hueRange == null) return 0;
     var hue = _randomWithin(hueRange);
@@ -77,22 +108,41 @@ class RandomColor {
   }
 
   // Pick Saturation
-  static _pickSaturation(int hue, Luminosity luminosity, ColorType colorType) {
+  static _pickSaturation(int hue, Luminosity luminosity, dynamic colorType) {
     if (colorType == ColorType.monochrome) return 0;
     if (luminosity == Luminosity.random) return __randomWithin(0, 100);
     Range saturationRange = _getColorInfo(hue).saturationRange;
     var sMin = saturationRange.lower;
     var sMax = saturationRange.upper;
+    var luminosBright = () {
+      sMin = 55;
+    };
+    var luminosDark = () {
+      sMin = sMax - 10;
+    };
+
+    var luminoslight = () {
+      sMax = 55;
+    };
     switch (luminosity) {
       case Luminosity.bright:
-        sMin = 55;
+        luminosBright();
         break;
       case Luminosity.dark:
-        sMin = sMax - 10;
+        luminosDark();
         break;
       case Luminosity.light:
-        sMax = 55;
+        luminoslight();
         break;
+      case Luminosity.random:
+        var r = math.Random().nextInt(2);
+        if (r == 0) {
+          luminosBright();
+        } else if (r == 1) {
+          luminosDark();
+        } else {
+          luminoslight();
+        }
     }
     return __randomWithin(sMin, sMax);
   }
@@ -117,6 +167,7 @@ class RandomColor {
     return _randomWithin(Range(lower: bMin, upper: bMax));
   }
 
+  // return a color format e.g rgba, hex, hsl.
   static _setFormat(hue, saturation, value, Options options) {
     switch (options.format) {
       case Format.hsvArray:
@@ -153,10 +204,12 @@ class RandomColor {
       case Format.hex:
         return _hsvToHex(hue, saturation, value);
       default:
+        // if no format is provided then return a hex color format
         return _hsvToHex(hue, saturation, value);
     }
   }
 
+  // get minimium brightness by providing the hue and satuation
   static int _getMinimiumBrightness(int hue, int saturation) {
     var lowerBounds = _getColorInfo(hue).lowerBounds;
     for (int i = 0; i < lowerBounds.length - 1; i++) {
@@ -176,7 +229,7 @@ class RandomColor {
     return 0;
   }
 
-  // GetColorInfo
+  // GetColorInfo usng hue
   static DefinedColor _getColorInfo(int hue) {
     // Maps red colors to make picking hue easier
     if (hue >= 334 && hue <= 360) {
@@ -197,10 +250,17 @@ class RandomColor {
     return __randomWithin(range.lower, range.upper);
   }
 
+  // generate a random number withing a boundry i.e (lower-upper)
   static int __randomWithin(int lower, int upper) {
-    return lower + _random.nextInt(upper - lower);
+    var goldenratio = 0.618033988749895;
+    var _r = math.Random().nextDouble();
+    _r += goldenratio;
+    _r %= 1;
+    return (lower + _r * (upper + 1 - lower)).floor();
+    //return lower + _random.nextInt(upper - lower);
   }
 
+  //convert hsl to hsl color format
   static List<int> _hsvToHsl(hue, saturation, value) {
     var s = saturation / 100;
     var v = value / 100;
@@ -215,12 +275,13 @@ class RandomColor {
     ];
   }
 
-  static _componentToHex(c) {
+  static _componentToHex(int c) {
     print("Hex component => $c");
-    var hex = c.toString();
+    var hex = c.toRadixString(16);
     return hex.length == 1 ? '0' + hex : hex;
   }
 
+  // convert hsv to hex color format
   static _hsvToHex(hue, saturation, value) {
     var rgb = _hsvToRGB(hue: hue, saturation: saturation, value: value);
     var hex =
@@ -228,6 +289,7 @@ class RandomColor {
     return hex;
   }
 
+  //convert hsv to RGB color format
   static List<int> _hsvToRGB({hue, saturation, value}) {
     var h = hue.toDouble();
     if (h == 0) {
@@ -281,12 +343,12 @@ class RandomColor {
         break;
       default:
     }
-    ;
 
     var result = [(r * 255).floor(), (g * 255).floor(), (b * 255).floor()];
     return result;
   }
 
+  // define and load color to be used
   static void __loadColorBounds() {
     _defineColor(
       colorType: ColorType.monochrome,
@@ -419,7 +481,6 @@ class RandomColor {
     );
   }
 }
-
 class DefinedColor {
   final Range hueRange;
   final Range saturationRange;

@@ -1,19 +1,19 @@
-import 'package:randomcolor/src/colortype.dart';
-import 'package:randomcolor/src/luminos.dart';
+import 'package:flutter_randomcolor/flutter_randomcolor.dart';
+import 'package:flutter_randomcolor/src/colortype.dart';
 
 class Options {
-  final ColorType colorType;
+  final dynamic colorType;
   final Luminosity luminosity;
   final Format format;
   final double alpha;
   final int count;
 
   Options({
-    this.colorType,
-    this.luminosity,
-    this.format,
-    this.alpha,
-    this.count,
+    this.colorType = ColorType.random,
+    this.luminosity = Luminosity.random,
+    this.format = Format.rgb,
+    this.alpha = 1.0,
+    this.count = 1,
   });
 }
 
