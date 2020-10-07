@@ -25,7 +25,7 @@ var color = RandomColor.getColor(options);
 
 You can pass an option to influence the type of color it produces. The options object accepts the following properties
 
-**colorType -** This control the type of color to be generated. colortype is a enum data type of the following:- `random`, `monochrome`, `red`, `orange`, `yellow`, `green`, `blue`, `purple`, `pink`
+**colorType -** This control the type of color to be generated. colortype is a enum data type of the following:- `random`, `monochrome`, `red`, `orange`, `yellow`, `green`, `blue`, `purple`, `pink`. it either accept `ColorType` data or `List<ColorType>` for collection of specific colors
 
 **luminosity -** This control the luminosity of the generated color. luminosity is a enum data type of the following:- `random`, `dark`, `light`, `bright`
 
@@ -40,6 +40,12 @@ You can pass an option to influence the type of color it produces. The options o
 ```dart
 // Return a single blue color in rgba format
 Options options = Options(format: Format.rgba, colorType: ColorType.blue);
+var color = RandomColor.getColor(options);
+
+/* Return a single color of type random, luminiosity random, format hex, alpha 1.0, and count is 1
+i.e Options class has a default value of the following ColorType: random, Luminiosity:random, Format:hex, alpha:1.0
+*/
+Options options = Options();
 var color = RandomColor.getColor(options);
 
 // Return an array of ten green colors in hex format
@@ -61,8 +67,9 @@ var color = RandomColor.getColor(options);
 // Return a light hsl color with a random alpha
 Options options = Options(format: Format.hsla, luminosity: Luminosity.light);
 var color = RandomColor.getColor(options);
+
 ```
 
 ### Other languages
 
-RandomColor is available in JavaScript, C#, C++, Go, Python, Swift, Objective-C, Java, R and Rust.
+RandomColor is available in [JavaScript](https://github.com/davidmerfield/randomColor), [C#](https://github.com/nathanpjones/randomColorSharped), [C++](https://github.com/xuboying/randomcolor-cpp), [Go](https://github.com/hansrodtang/randomcolor), [Python](https://github.com/kevinwuhoo/randomcolor-py), [Swift](https://github.com/onevcat/RandomColorSwift), [Objective-C](https://github.com/yageek/randomColor), [Java](https://github.com/lzyzsd/AndroidRandomColor), [R](https://github.com/ronammar/randomcoloR) and [Rust](https://github.com/elementh/random_color).
