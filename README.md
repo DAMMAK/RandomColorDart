@@ -2,15 +2,16 @@
 
 A dart package for generating attractive random colors.
 
-This is a Dart port of David Merfield randomColor Javascript utility
+This is a Dart port of David Merfield randomColor [Javascript utility](https://github.com/davidmerfield/randomColor)
 
 [![Demo](https://github.com/DAMMAK/RandomColorDart/blob/master/randomcolor.png)](http://www.strangeplanet.fr/work/RandomColor.php)
 
 ## Installing
 
 ```dart
+
 dependencies:
-  randomcolor: ^1.0.2
+  flutter_randomcolor: ^1.0.0
 
 ```
 
@@ -58,6 +59,10 @@ var color = RandomColor.getColor(options);
 
 // Return a bright color in rgb
 Options options = Options(format: Format.rgb, luminosity: Luminosity.bright);
+var color = RandomColor.getColor(options);
+
+// Return an array of 10 red and green color in hex format
+Options options = Options(format: Format.rgb, luminosity: Luminosity.bright, colorType: [ColorType.red, ColorType.green]);
 var color = RandomColor.getColor(options);
 
 // Return a dark color with a specific alpha
