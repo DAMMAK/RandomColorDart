@@ -3,6 +3,7 @@
 [![Circle CI Build](https://img.shields.io/circleci/build/github/DAMMAK/RandomColorDart)](https://github.com/DAMMAK/RandomColorDart)
 [![Github Code Size](https://img.shields.io/github/languages/code-size/DAMMAK/RandomColorDart)](https://github.com/DAMMAK/RandomColorDart)
 [![Github License](https://img.shields.io/github/license/DAMMAK/RandomColorDart)](https://github.com/DAMMAK/RandomColorDart)
+[![Pub version](https://img.shields.io/pub/v/flutter_randomcolor)](https://pub.dev/packages/flutter_randomcolor)
 
 A dart package for generating attractive random colors.
 
