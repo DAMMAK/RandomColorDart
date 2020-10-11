@@ -9,7 +9,7 @@ A dart package for generating attractive random colors.
 
 This is a Dart port of David Merfield randomColor [Javascript utility](https://github.com/davidmerfield/randomColor)
 
-[![Demo](https://github.com/DAMMAK/RandomColorDart/blob/master/randomcolor.png)](http://www.strangeplanet.fr/work/RandomColor.php)
+[![Demo](https://github.com/DAMMAK/RandomColorDart/blob/master/randomcolor.png)](https://randomcolor.dammak.dev/)
 
 ## Installing
 
