@@ -68,7 +68,7 @@ var color = RandomColor.getColor(options);
 Options options = Options(format: Format.rgb, luminosity: Luminosity.bright);
 var color = RandomColor.getColor(options);
 
-// Return an array of 10 red and green color in hex format
+// Return an array of 10 red and green colors in hex format
 Options options = Options(format: Format.rgb, luminosity: Luminosity.bright, colorType: [ColorType.red, ColorType.green]);
 var color = RandomColor.getColor(options);
 
