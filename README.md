@@ -1,5 +1,5 @@
 # Random Color
-
+[![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://circleci.com/gh/DAMMAK/RandomColorDart)
 [![Circle CI Build](https://img.shields.io/circleci/build/github/DAMMAK/RandomColorDart)](https://github.com/DAMMAK/RandomColorDart)
 [![Github Code Size](https://img.shields.io/github/languages/code-size/DAMMAK/RandomColorDart)](https://github.com/DAMMAK/RandomColorDart)
 [![Github License](https://img.shields.io/github/license/DAMMAK/RandomColorDart)](https://github.com/DAMMAK/RandomColorDart)
