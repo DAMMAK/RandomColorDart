@@ -1,4 +1,5 @@
 # Random Color
+
 [![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://circleci.com/gh/DAMMAK/RandomColorDart)
 [![Github Code Size](https://img.shields.io/github/languages/code-size/DAMMAK/RandomColorDart)](https://github.com/DAMMAK/RandomColorDart)
 [![Github License](https://img.shields.io/github/license/DAMMAK/RandomColorDart)](https://github.com/DAMMAK/RandomColorDart/blob/master/LICENSE)
@@ -8,7 +9,9 @@ A dart package for generating attractive random colors.
 
 This is a Dart port of David Merfield randomColor [Javascript utility](https://github.com/davidmerfield/randomColor)
 
-[![Demo](https://github.com/DAMMAK/RandomColorDart/blob/master/randomcolor.png)](https://randomcolor.dammak.dev/)(See Demo)
+[![Demo](https://github.com/DAMMAK/RandomColorDart/blob/master/randomcolor.png)]
+
+[See Demo](https://randomcolor.dammak.dev/).
 
 ## Installing
 
