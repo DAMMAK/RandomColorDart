@@ -24,3 +24,7 @@
 - fix bug on hex color generator
 - included random color generator for multiple color format
 - improved documentation
+
+## [1.0.1]
+
+- improved documentation
