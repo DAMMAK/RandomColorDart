@@ -37,3 +37,6 @@
 
 - stable null-safety
 
+## [1.0.2]
+
+- fix doc
