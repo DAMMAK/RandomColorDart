@@ -1,5 +1,4 @@
 import 'package:flutter_randomcolor/flutter_randomcolor.dart';
-import 'package:flutter_randomcolor/src/colortype.dart';
 
 void main() async {
   var options = Options(

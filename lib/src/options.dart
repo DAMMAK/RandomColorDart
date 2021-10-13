@@ -5,14 +5,14 @@ class Options {
   final dynamic colorType;
   final Luminosity luminosity;
   final Format format;
-  final double alpha;
+  final double? alpha;
   final int count;
 
   Options({
     this.colorType = ColorType.random,
     this.luminosity = Luminosity.random,
     this.format = Format.rgb,
-    this.alpha = 1.0,
+    this.alpha,
     this.count = 1,
   });
 }
