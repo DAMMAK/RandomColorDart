@@ -18,7 +18,7 @@ This is a Dart port of David Merfield randomColor [Javascript utility](https://g
 ```dart
 
 dependencies:
-  flutter_randomcolor: ^1.0.1
+  flutter_randomcolor: ^1.0.2
 
 ```
 

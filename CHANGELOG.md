@@ -28,3 +28,12 @@
 ## [1.0.1]
 
 - improved documentation
+
+## [1.0.11]
+
+- migrated to null-safety
+
+## [1.0.2]
+
+- stable null-safety
+
