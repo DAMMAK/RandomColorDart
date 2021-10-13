@@ -8,8 +8,8 @@ import 'package:flutter_randomcolor/src/range.dart';
 
 class RandomColor {
   // color dictionary that save all the colors
-  static Map<ColorType, DefinedColor> _colorDictionary =
-      Map<ColorType, DefinedColor>();
+  static Map<ColorType?, DefinedColor> _colorDictionary =
+      Map<ColorType?, DefinedColor>();
   static math.Random _random = math.Random(); //seed data
 
 // get random colors based on options provided
@@ -48,7 +48,7 @@ class RandomColor {
 
   // define the color based on provided hue and lowerBounds
   static _defineColor(
-      {ColorType colorType, List<int> hueRange, List<List> lowerBounds}) {
+      {ColorType? colorType, List<int>? hueRange, required List<List> lowerBounds}) {
     var sMin = lowerBounds[0][0]; // saturation lowerbound
     var sMax = lowerBounds[lowerBounds.length - 1][0]; // saturation upperbound
     var bMin = lowerBounds[lowerBounds.length - 1][1]; // brightness lowerbound
@@ -63,8 +63,8 @@ class RandomColor {
   }
 
 // Get Hue Range
-  static Range _getHueRange(dynamic colorType) {
-    List<Range> ranges = [];
+  static Range? _getHueRange(dynamic colorType) {
+    List<Range?> ranges = [];
     if (colorType is ColorType) {
       var color = _colorDictionary[colorType];
       if (color != null) {
@@ -76,7 +76,7 @@ class RandomColor {
         if (element == ColorType.random) {
           ranges.add(Range(lower: 0, upper: 360));
         } else {
-          ranges.add(_colorDictionary[element].hueRange);
+          ranges.add(_colorDictionary[element]!.hueRange);
         }
       });
     }
@@ -111,14 +111,14 @@ class RandomColor {
   static _pickSaturation(int hue, Luminosity luminosity, dynamic colorType) {
     if (colorType == ColorType.monochrome) return 0;
     if (luminosity == Luminosity.random) return __randomWithin(0, 100);
-    Range saturationRange = _getColorInfo(hue).saturationRange;
+    Range saturationRange = _getColorInfo(hue).saturationRange!;
     var sMin = saturationRange.lower;
     var sMax = saturationRange.upper;
     var luminosBright = () {
       sMin = 55;
     };
     var luminosDark = () {
-      sMin = sMax - 10;
+      sMin = sMax! - 10;
     };
 
     var luminoslight = () {
@@ -144,7 +144,7 @@ class RandomColor {
           luminoslight();
         }
     }
-    return __randomWithin(sMin, sMax);
+    return __randomWithin(sMin!, sMax!);
   }
 
   // Pick Brightness
@@ -211,16 +211,16 @@ class RandomColor {
 
   // get minimium brightness by providing the hue and satuation
   static int _getMinimiumBrightness(int hue, int saturation) {
-    var lowerBounds = _getColorInfo(hue).lowerBounds;
+    var lowerBounds = _getColorInfo(hue).lowerBounds!;
     for (int i = 0; i < lowerBounds.length - 1; i++) {
-      var s1 = lowerBounds[i].x;
+      var s1 = lowerBounds[i].x!;
       var v1 = lowerBounds[i].y;
 
       var s2 = lowerBounds[i + 1].x;
       var v2 = lowerBounds[i + 1].y;
 
-      if (saturation >= s1 && saturation <= s2) {
-        var m = (v2 - v1) / (s2 - s1);
+      if (saturation >= s1 && saturation <= s2!) {
+        var m = (v2! - v1!) / (s2 - s1);
         var b = v1 - m * s1;
         return (m * saturation + b).toInt();
       }
@@ -238,8 +238,8 @@ class RandomColor {
     var result = _colorDictionary.entries
         .where((element) =>
             element.value.hueRange != null &&
-            hue >= element.value.hueRange.lower &&
-            hue <= element.value.hueRange.upper)
+            hue >= element.value.hueRange!.lower! &&
+            hue <= element.value.hueRange!.upper!)
         .first;
 
     assert(result.value != null);
@@ -247,7 +247,7 @@ class RandomColor {
   }
 
   static int _randomWithin(Range range) {
-    return __randomWithin(range.lower, range.upper);
+    return __randomWithin(range.lower!, range.upper!);
   }
 
   // generate a random number withing a boundry i.e (lower-upper)
@@ -290,7 +290,7 @@ class RandomColor {
   }
 
   //convert hsv to RGB color format
-  static List<int> _hsvToRGB({hue, saturation, value}) {
+  static List<int> _hsvToRGB({required hue, required saturation, required value}) {
     var h = hue.toDouble();
     if (h == 0) {
       h = 1;
@@ -306,9 +306,9 @@ class RandomColor {
     var p = v * (1 - s);
     var q = v * (1 - f * s);
     var t = v * (1 - (1 - f) * s);
-    var r = 256.0;
-    var g = 256.0;
-    var b = 256.0;
+    double? r = 256.0;
+    double? g = 256.0;
+    double? b = 256.0;
 
     switch (i) {
       case 0:
@@ -344,7 +344,7 @@ class RandomColor {
       default:
     }
 
-    var result = [(r * 255).floor(), (g * 255).floor(), (b * 255).floor()];
+    var result = [(r! * 255).floor(), (g! * 255).floor(), (b! * 255).floor()];
     return result;
   }
 
@@ -482,10 +482,10 @@ class RandomColor {
   }
 }
 class DefinedColor {
-  final Range hueRange;
-  final Range saturationRange;
-  final Range brightnessRange;
-  final List<Point> lowerBounds;
+  final Range? hueRange;
+  final Range? saturationRange;
+  final Range? brightnessRange;
+  final List<Point>? lowerBounds;
   DefinedColor({
     this.brightnessRange,
     this.hueRange,
@@ -495,7 +495,7 @@ class DefinedColor {
 }
 
 class Point {
-  int x;
-  int y;
+  int? x;
+  int? y;
   Point({this.x, this.y});
 }
