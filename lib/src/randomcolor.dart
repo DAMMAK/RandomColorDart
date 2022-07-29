@@ -55,7 +55,7 @@ class RandomColor {
     var bMax = lowerBounds[0][1]; // brightness upperbound
 
     _colorDictionary[colorType] = DefinedColor(
-      hueRange: Range.toRange(hueRange),
+      hueRange: hueRange != null ? Range.toRange(hueRange) : null,
       lowerBounds: lowerBounds.map((e) => Point(x: e[0], y: e[1])).toList(),
       brightnessRange: Range(upper: bMax, lower: bMin),
       saturationRange: Range(upper: sMax, lower: sMin),
