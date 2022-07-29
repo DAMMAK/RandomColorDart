@@ -1,5 +1,4 @@
 import 'package:flutter_randomcolor/flutter_randomcolor.dart';
-import 'package:flutter_randomcolor/src/colortype.dart';
 
 class Options {
   final dynamic colorType;
