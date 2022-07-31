@@ -40,3 +40,9 @@
 ## [1.0.12]
 
 - fix doc
+
+## [1.0.13]
+- fix cast error
+
+## [1.0.14]
+- update documentation.

@@ -1,6 +1,6 @@
 name: flutter_randomcolor
 description: A flutter package for generating attractive random colors. it can be used for data visualization, generative and lot more.
-version: 1.0.12
+version: 1.0.14
 repository: https://github.com/DAMMAK/RandomColorDart
 
 environment:
