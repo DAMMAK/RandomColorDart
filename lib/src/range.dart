@@ -7,10 +7,8 @@ class Range {
     switch (index) {
       case 0:
         return lower;
-        break;
       case 1:
         return upper;
-        break;
       default:
     }
     return 0;
@@ -28,8 +26,7 @@ class Range {
     }
   }
 
-  factory Range.toRange(List<int>? range) {
-    if (range == null) return null!;
+  factory Range.toRange(List<int> range) {
     return Range(
       lower: range[0],
       upper: range[1],
