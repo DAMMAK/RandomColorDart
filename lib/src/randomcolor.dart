@@ -267,7 +267,6 @@ class RandomColor {
   }
 
   static _componentToHex(int c) {
-    print("Hex component => $c");
     var hex = c.toRadixString(16);
     return hex.length == 1 ? '0' + hex : hex;
   }
