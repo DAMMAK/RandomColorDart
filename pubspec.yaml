@@ -4,7 +4,7 @@ version: 1.0.14
 repository: https://github.com/DAMMAK/RandomColorDart
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.12.0 <4.0.0"
 
 dependencies:
   flutter:
