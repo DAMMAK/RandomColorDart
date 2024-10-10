@@ -42,7 +42,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_randomcolor: ^1.0.15
+  flutter_randomcolor: ^1.0.16
 ```
 
 Then run:
