@@ -8,7 +8,7 @@
 Generate visually appealing random colors with ease in your Dart and Flutter projects.
 
 [//]: # (![Demo]&#40;https://github.com/DAMMAK/RandomColorDart/blob/master/randomcolor.png&#41;)
-[![Demo](https://github.com/DAMMAK/RandomColorDart/blob/master/randomcolor.png)](https://randomcolor.dammak.dev/)
+[![Demo](https://raw.githubusercontent.com/DAMMAK/RandomColorDart/refs/heads/main/randomcolor.png)](https://randomcolor.dammak.dev/)
 
 
 [Interactive Demo](https://randomcolor.dammak.dev/)
