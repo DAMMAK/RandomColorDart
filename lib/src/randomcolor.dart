@@ -1,6 +1,7 @@
 library flutter_randomcolor;
 
 import 'dart:math' as math;
+import 'dart:ui';
 
 import 'package:flutter_randomcolor/flutter_randomcolor.dart';
 import 'package:flutter_randomcolor/src/range.dart';
@@ -12,7 +13,7 @@ class RandomColor {
   // ignore: unused_field
   static math.Random _random = math.Random(); //seed data
 
-// get random colors based on options provided
+/// get random colors based on options provided
   static getColor(Options options) {
     __loadColorBounds();
     // check if count is not provided or less than 2 then return a single color
@@ -25,6 +26,80 @@ class RandomColor {
     }
     return colors;
   }
+
+  /// New method to get a Flutter Color object
+  static Color getColorObject(Options options) {
+    var colorString = getColor(options);
+    return _convertToColor(colorString);
+  }
+
+  // Helper method to convert various color formats to Color object
+  static Color _convertToColor(dynamic color) {
+    if (color is Color) {
+      return color;
+    } else if (color is String) {
+      if (color.startsWith('#')) {
+        return Color(int.parse('0xFF${color.substring(1)}'));
+      } else if (color.startsWith('rgb')) {
+        var rgbValues = color
+            .replaceAll(RegExp(r'[rgba\(\)]'), '')
+            .split(',')
+            .map((e) => int.parse(e.trim()))
+            .toList();
+        return Color.fromRGBO(rgbValues[0], rgbValues[1], rgbValues[2],
+            rgbValues.length > 3 ? double.parse(rgbValues[3] as String) : 1.0);
+      } else if (color.startsWith('hsl')) {
+        // Convert HSL to RGB, then to Color
+        var hslValues = color
+            .replaceAll(RegExp(r'[hsla\(\)%]'), '')
+            .split(',')
+            .map((e) => double.parse(e.trim()))
+            .toList();
+        var rgb = _hslToRGB(hslValues[0], hslValues[1], hslValues[2]);
+        return Color.fromRGBO(rgb[0], rgb[1], rgb[2],
+            hslValues.length > 3 ? hslValues[3] : 1.0);
+      }
+    } else if (color is List) {
+      if (color.length == 3) {
+        return Color.fromRGBO(color[0], color[1], color[2], 1.0);
+      } else if (color.length == 4) {
+        return Color.fromRGBO(color[0], color[1], color[2], color[3]);
+      }
+    }
+    throw ArgumentError('Unsupported color format');
+  }
+
+  // Helper method to convert HSL to RGB
+  static List<int> _hslToRGB(double h, double s, double l) {
+    h /= 60;
+    s /= 100;
+    l /= 100;
+
+    double c = (1 - (2 * l - 1).abs()) * s;
+    double x = c * (1 - ((h % 2) - 1).abs());
+    double m = l - c / 2;
+
+    List<double> rgb;
+    if (h < 1) {
+      rgb = [c, x, 0];
+    } else if (h < 2) {
+      rgb = [x, c, 0];
+    } else if (h < 3) {
+      rgb = [0, c, x];
+    } else if (h < 4) {
+      rgb = [0, x, c];
+    } else if (h < 5) {
+      rgb = [x, 0, c];
+    } else {
+      rgb = [c, 0, x];
+    }
+
+    return rgb.map((e) => ((e + m) * 255).round()).toList();
+  }
+
+
+
+
 
   // get the color based on provided option and return a single color
   static _pick(Options options) {
