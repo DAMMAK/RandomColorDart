@@ -46,3 +46,10 @@
 
 ## [1.0.14]
 - update documentation.
+
+## [1.0.16]
+- New `getColorObject()` method to directly return Flutter `Color` objects.
+- Support for generating colors as Flutter `Color` objects in all existing formats.
+- Improved color conversion efficiency for various formats.
+- Enhanced documentation with more comprehensive examples and usage guidelines.
+- Resolved issues with color generation in certain edge cases.
