@@ -156,6 +156,15 @@ var transparentDark = RandomColor.getColor(Options(
   format: Format.rgba,
   alpha: 0.5
 ));
+
+
+// Flutter Color with seed options to return the same color
+var seedColor = RandomColor.getColorObject(Options(
+  colorType: ColorType.red,
+  luminosity: Luminosity.dark,
+  format: Format.hex,
+  seed: 1234
+));
 ```
 
 ## Contributing
