@@ -16,6 +16,9 @@ class RandomColor {
 /// get random colors based on options provided
   static getColor(Options options) {
     __loadColorBounds();
+    if (options.seed != null) {
+      seed(options.seed!);
+    }
     // check if count is not provided or less than 2 then return a single color
     if (options.count < 2) return _pick(options);
     var colors = [];
