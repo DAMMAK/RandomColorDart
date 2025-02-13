@@ -56,3 +56,6 @@
 - Improved color conversion efficiency for various formats.
 - Enhanced documentation with more comprehensive examples and usage guidelines.
 - Resolved issues with color generation in certain edge cases.
+
+## [1.0.17]
+- Add seed option to generate the same color with the same seed.
