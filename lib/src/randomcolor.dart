@@ -16,6 +16,9 @@ class RandomColor {
 /// get random colors based on options provided
   static getColor(Options options) {
     __loadColorBounds();
+    if (options.seed != null) {
+      seed(options.seed!);
+    }
     // check if count is not provided or less than 2 then return a single color
     if (options.count < 2) return _pick(options);
     var colors = [];
@@ -319,7 +322,7 @@ class RandomColor {
   // generate a random number withing a boundry i.e (lower-upper)
   static int __randomWithin(int lower, int upper) {
     var goldenratio = 0.618033988749895;
-    var _r = math.Random().nextDouble();
+    var _r = _random.nextDouble();
     _r += goldenratio;
     _r %= 1;
     return (lower + _r * (upper + 1 - lower)).floor();
