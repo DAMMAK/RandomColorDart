@@ -322,7 +322,7 @@ class RandomColor {
   // generate a random number withing a boundry i.e (lower-upper)
   static int __randomWithin(int lower, int upper) {
     var goldenratio = 0.618033988749895;
-    var _r = math.Random().nextDouble();
+    var _r = _random.nextDouble();
     _r += goldenratio;
     _r %= 1;
     return (lower + _r * (upper + 1 - lower)).floor();
