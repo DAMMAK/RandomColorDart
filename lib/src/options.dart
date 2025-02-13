@@ -6,6 +6,7 @@ class Options {
   final Format format;
   final double? alpha;
   final int count;
+  final int? seed;
 
   Options({
     this.colorType = ColorType.random,
@@ -13,6 +14,7 @@ class Options {
     this.format = Format.rgb,
     this.alpha,
     this.count = 1,
+    this.seed,
   });
 }
 
