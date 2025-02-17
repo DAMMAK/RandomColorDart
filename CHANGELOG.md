@@ -59,3 +59,6 @@
 
 ## [1.0.17]
 - Add seed option to generate the same color with the same seed.
+
+## [1.0.18]
+- Fixed the issue with color generation that was introduced in the previous version.
