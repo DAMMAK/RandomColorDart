@@ -541,8 +541,111 @@ class RandomColor {
         [100, 50]
       ],
     );
+    _defineColor(
+      colorType: ColorType.orange,
+      hueRange: [19, 46],
+      lowerBounds: [
+        [20, 100],
+        [30, 93],
+        [40, 88],
+        [50, 86],
+        [60, 85],
+        [70, 70],
+        [100, 70]
+      ],
+    );
 
-    // ... (rest of the color definitions)
+    _defineColor(
+      colorType: ColorType.yellow,
+      hueRange: [46, 62],
+      lowerBounds: [
+        [25, 100],
+        [40, 94],
+        [50, 89],
+        [60, 86],
+        [70, 84],
+        [80, 82],
+        [90, 80],
+        [100, 75]
+      ],
+    );
+
+    _defineColor(
+      colorType: ColorType.green,
+      hueRange: [62, 178],
+      lowerBounds: [
+        [30, 100],
+        [40, 90],
+        [50, 85],
+        [60, 81],
+        [70, 74],
+        [80, 64],
+        [90, 50],
+        [100, 40]
+      ],
+    );
+
+    _defineColor(
+      colorType: ColorType.blue,
+      hueRange: [178, 257],
+      lowerBounds: [
+        [20, 100],
+        [30, 86],
+        [40, 80],
+        [50, 74],
+        [60, 60],
+        [70, 52],
+        [80, 44],
+        [90, 39],
+        [100, 35]
+      ],
+    );
+
+    _defineColor(
+      colorType: ColorType.purple,
+      hueRange: [257, 282],
+      lowerBounds: [
+        [20, 100],
+        [30, 87],
+        [40, 79],
+        [50, 70],
+        [60, 65],
+        [70, 59],
+        [80, 52],
+        [90, 45],
+        [100, 42]
+      ],
+    );
+
+    _defineColor(
+      colorType: ColorType.purple,
+      hueRange: [257, 282],
+      lowerBounds: [
+        [20, 100],
+        [30, 87],
+        [40, 79],
+        [50, 70],
+        [60, 65],
+        [70, 59],
+        [80, 52],
+        [90, 45],
+        [100, 42]
+      ],
+    );
+
+    _defineColor(
+      colorType: ColorType.pink,
+      hueRange: [282, 334],
+      lowerBounds: [
+        [20, 100],
+        [30, 90],
+        [40, 86],
+        [60, 84],
+        [80, 80],
+        [90, 75],
+        [100, 73]
+      ],
+    );
   }
 }
 
